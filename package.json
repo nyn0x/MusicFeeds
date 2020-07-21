@@ -1,0 +1,65 @@
+{
+  "name": "noxy-cardz",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "blitz start",
+    "start": "blitz start --production -H 0.0.0.0 -p $PORT",
+    "studio": "blitz db studio",
+    "build": "blitz db migrate && blitz build",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "test": "echo \"No tests yet\""
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "prettier": {
+    "semi": false,
+    "printWidth": 100
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "pre-push": "blitz test"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "dependencies": {
+    "@material-ui/core": "4.10.2",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.56",
+    "@prisma/cli": "2.1.0",
+    "@prisma/client": "2.1.0",
+    "@reduxjs/toolkit": "^1.4.0",
+    "@types/react": "16.9.41",
+    "blitz": "0.16.4",
+    "chartist": "0.11.4",
+    "material-table": "1.62.0",
+    "react": "0.0.0-experimental-33c3af284",
+    "react-chartist": "0.14.3",
+    "react-dom": "0.0.0-experimental-33c3af284",
+    "react-redux": "7.2.0",
+    "typescript": "3.9.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.34.1-alpha.2",
+    "@typescript-eslint/parser": "2.34.1-alpha.2",
+    "babel-eslint": "10.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-react-app": "5.2.1",
+    "eslint-plugin-flowtype": "4.7.0",
+    "eslint-plugin-import": "2.21.2",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-react-hooks": "3.0.0",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
+    "next": "9.4.4",
+    "prettier": "2.0.5",
+    "pretty-quick": "2.0.1"
+  },
+  "private": true
+}
