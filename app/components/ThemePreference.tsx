@@ -33,7 +33,7 @@ const ThemePreference = ({ children }) => {
   const themeMode = useSelector(selectThemeMode)
   let defaultState = {
     posts: [],
-    themeMode: "light",
+    themeMode: { value: "light" },
   }
 
   const theme = useMemo(
