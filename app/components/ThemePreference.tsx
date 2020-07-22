@@ -2,7 +2,8 @@ import { useMemo, useEffect } from "react"
 import {
   // createMuiTheme,
   ThemeProvider,
-  unstable_createMuiStrictModeTheme as createMuiTheme, // (warning findNode..) https://github.com/mui-org/material-ui/issues/13394
+  unstable_createMuiStrictModeTheme as createMuiTheme,
+  responsiveFontSizes, // (warning findNode..) https://github.com/mui-org/material-ui/issues/13394
 } from "@material-ui/core/styles"
 import { PaletteOptions } from "@material-ui/core/styles/createPalette"
 import { useSelector } from "react-redux"
@@ -38,12 +39,17 @@ const ThemePreference = ({ children }) => {
 
   const theme = useMemo(
     () =>
-      createMuiTheme({
-        palette: {
-          ...globalPalette,
-          type: themeMode,
-        },
-      }),
+      responsiveFontSizes(
+        createMuiTheme({
+          palette: {
+            ...globalPalette,
+            type: themeMode,
+            background: {
+              default: themeMode === "light" ? "#c1c1c1" : "#303030",
+            },
+          },
+        })
+      ),
     [themeMode]
   )
   // -->
