@@ -1,5 +1,7 @@
 ### Blitz app
 
+Project for playing with blitz
+
 Start the dev server
 
     npm run dev
