@@ -6,6 +6,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import { NAME_APP } from "app/utils/constantes"
 import { getFrontLayout } from "../layouts/FrontLayout"
 import { Card, CardContent, CardActions, Button } from "@material-ui/core"
+import Posts from "../components/Listing/Posts"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,28 +30,7 @@ const HomePage = () => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography>{NAME_APP}.</Typography>
-              <Card>
-                <CardContent>
-                  <Typography color="textSecondary" gutterBottom>
-                    Word of the Day
-                  </Typography>
-                  <Typography variant="h5" component="h2">
-                    be nev lent
-                  </Typography>
-                  <Typography color="textSecondary">adjective</Typography>
-                  <Typography component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
-                </CardContent>
-
-                <CardActions>
-                  <Button variant="contained" color="default">
-                    Toggle Theme Type
-                  </Button>
-                </CardActions>
-              </Card>
+              <Posts />
             </Grid>
           </Grid>
         </div>
