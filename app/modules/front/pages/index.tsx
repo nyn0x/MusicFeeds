@@ -31,7 +31,7 @@ const HomePage = () => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography>{NAME_APP}.</Typography>
-              <Link href="artist/456056/nox-974">
+              <Link href="artist/[id]/[slug-name-artist]" as="artist/456056/nox-974">
                 <Button variant="contained" color="primary">
                   Go to profile page artist
                 </Button>
