@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React, { Suspense, useState } from "react"
 import { Theme, createStyles, makeStyles, useTheme } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -80,8 +80,13 @@ export const PostsList = () => {
   //     getFetchMore: (lastGroup, allGroups) => lastGroup.nextPage,
   //   }
   // )
-  const [posts] = useQuery(getPosts, { orderBy: { id: "desc" }, include: { likes: {} } })
+  const [posts] = useQuery(
+    getPosts,
+    { orderBy: { id: "desc" }, include: { likes: {} } },
+    { refetchOnWindowFocus: false }
+  )
   const classes = useStyles()
+  const [state, setstate] = useState("yolo")
 
   return (
     <>
@@ -98,9 +103,17 @@ export const PostsList = () => {
         </button>
       </div>
       <div>{isFetching && !isFetchingMore ? "Fetching..." : null}</div> */}
+      {state}
       {posts.map((post) => (
         <Card key={post.id} className={classes.root}>
-          <div className={classes.wrapperCover}>
+          <div
+            role="button"
+            className={classes.wrapperCover}
+            tabIndex={0}
+            onClick={() => {
+              setstate("click on cover")
+            }}
+          >
             <CardMedia
               className={classes.cover}
               image={getThumbnailVideoYT(post.urlDistant)}
@@ -113,7 +126,17 @@ export const PostsList = () => {
             </div>
           </div>
           <div className={classes.details}>
-            <CardContent className={classes.content}>
+            <CardContent
+              className={classes.content}
+              role="button"
+              onKeyDown={() => {
+                setstate("click on card content")
+              }}
+              onClick={() => {
+                setstate("click on card content")
+              }}
+              tabIndex={0}
+            >
               <Typography component="h6" variant="h6">
                 {post.title}
               </Typography>
@@ -121,7 +144,14 @@ export const PostsList = () => {
           </div>
 
           <div className={classes.wrapperBurn}>
-            <IconButton aria-label="like">
+            <IconButton
+              aria-label="like"
+              role="button"
+              tabIndex={0}
+              onClick={() => {
+                setstate("click on burn btn")
+              }}
+            >
               <Badge badgeContent={5} max={9999} color="primary">
                 <WhatshotIcon className={classes.burnIcon} />
               </Badge>

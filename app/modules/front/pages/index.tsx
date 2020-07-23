@@ -7,6 +7,7 @@ import { NAME_APP } from "app/utils/constantes"
 import { getFrontLayout } from "../layouts/FrontLayout"
 import { Card, CardContent, CardActions, Button } from "@material-ui/core"
 import Posts from "../components/Listing/Posts"
+import { Link } from "blitz"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,6 +31,12 @@ const HomePage = () => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography>{NAME_APP}.</Typography>
+              <Link href="artist/456056/nox-974">
+                <Button variant="contained" color="primary">
+                  Go to profile page artist
+                </Button>
+              </Link>
+
               <Posts />
             </Grid>
           </Grid>

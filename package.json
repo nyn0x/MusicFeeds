@@ -41,6 +41,7 @@
     "react": "0.0.0-experimental-33c3af284",
     "react-chartist": "0.14.3",
     "react-dom": "0.0.0-experimental-33c3af284",
+    "react-player": "2.5.0",
     "react-redux": "7.2.0",
     "typescript": "3.9.5"
   },
