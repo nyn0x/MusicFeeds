@@ -16,7 +16,7 @@ import {
 } from "app/redux/slices/playerSlice"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { useWindowSize } from "app/utils/hooks/useWindowSize"
+// import { useWindowSize } from "app/utils/hooks/useWindowSize"
 import classnames from "classnames"
 
 const useStyles = makeStyles((theme: Theme) =>
