@@ -37,6 +37,7 @@
     "@types/react": "16.9.41",
     "blitz": "0.16.4",
     "chartist": "0.11.4",
+    "classnames": "2.2.6",
     "material-table": "1.62.0",
     "react": "0.0.0-experimental-33c3af284",
     "react-chartist": "0.14.3",

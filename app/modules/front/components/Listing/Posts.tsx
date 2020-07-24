@@ -5,9 +5,7 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import IconButton from "@material-ui/core/IconButton"
 import Typography from "@material-ui/core/Typography"
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious"
 import PlayArrowIcon from "@material-ui/icons/PlayArrow"
-import SkipNextIcon from "@material-ui/icons/SkipNext"
 import { useQuery, Link } from "blitz"
 import getPosts from "app/resources/posts/queries/getPosts"
 import WhatshotIcon from "@material-ui/icons/Whatshot"
@@ -15,6 +13,16 @@ import Badge from "@material-ui/core/Badge"
 import { useInfiniteQuery } from "blitz"
 import getInfinityPosts from "app/resources/posts/queries/getInfinityPosts"
 import { getThumbnailVideoYT } from "app/utils/youtube"
+import {
+  largePlayer,
+  DISPLAY_PLAYER,
+  setUrlPlayer,
+  selectPlayer,
+  StatePlayer,
+} from "app/redux/slices/playerSlice"
+import { useSelector } from "react-redux"
+
+import { useDispatch } from "react-redux"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,6 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 export const PostsList = () => {
+  const dispatch = useDispatch()
   // const [
   //   groupedProducts,
   //   { isFetching, isFetchingMore, fetchMore, canFetchMore },
@@ -86,8 +95,14 @@ export const PostsList = () => {
     { refetchOnWindowFocus: false }
   )
   const classes = useStyles()
-  const [state, setstate] = useState("yolo")
+  const statePlayer: StatePlayer = useSelector(selectPlayer)
+  const playMedia = (url) => {
+    dispatch(setUrlPlayer({ url }))
 
+    if (statePlayer.display === DISPLAY_PLAYER.NONE) {
+      dispatch(largePlayer())
+    }
+  }
   return (
     <>
       {/* {groupedProducts.map((group, i) => (
@@ -103,7 +118,7 @@ export const PostsList = () => {
         </button>
       </div>
       <div>{isFetching && !isFetchingMore ? "Fetching..." : null}</div> */}
-      {state}
+      <div>test</div>
       {posts.map((post) => (
         <Card key={post.id} className={classes.root}>
           <div
@@ -111,7 +126,7 @@ export const PostsList = () => {
             className={classes.wrapperCover}
             tabIndex={0}
             onClick={() => {
-              setstate("click on cover")
+              playMedia(post.urlDistant)
             }}
           >
             <CardMedia
@@ -129,11 +144,8 @@ export const PostsList = () => {
             <CardContent
               className={classes.content}
               role="button"
-              onKeyDown={() => {
-                setstate("click on card content")
-              }}
               onClick={() => {
-                setstate("click on card content")
+                playMedia(post.urlDistant)
               }}
               tabIndex={0}
             >
@@ -149,7 +161,7 @@ export const PostsList = () => {
               role="button"
               tabIndex={0}
               onClick={() => {
-                setstate("click on burn btn")
+                console.log("click on burn btn")
               }}
             >
               <Badge badgeContent={5} max={9999} color="primary">
@@ -171,12 +183,4 @@ export default function Posts() {
       </Suspense>
     </>
   )
-}
-{
-  /* <CardMedia
-            className={classes.cover}
-            src={getUrlEmbed(post.urlDistant)}
-            title={post.title}
-            component="iframe"
-          /> */
 }

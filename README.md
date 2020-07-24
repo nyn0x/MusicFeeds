@@ -1,24 +1,21 @@
-### Blitz app
+### BLITZ APP
 
-Project for playing with blitz & redux
+Project for playing with blitz & redux & other useful tools
 
-Start the dev server
+Start the dev server :
 
-npm run dev
+    npm run dev
 
-### libraries used :
+### LIBRARIES USED :
 
-- UI - [https://material-ui.com/](https://material-ui.com/) - [https://material-ui.com/components/material-icons/](https://material-ui.com/components/material-icons/)
-
-* State management - [https://redux.js.org/](https://redux.js.org/) - [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
+- UI : [https://material-ui.com/](https://material-ui.com/) - [https://material-ui.com/components/material-icons/](https://material-ui.com/components/material-icons/)
+- State management : [https://redux.js.org/](https://redux.js.org/) - [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
 
 ### MEMO
 
-- Deployment on Heroku: increase boot timeout, put on max (because take more than 60sec to generate files) [https://tools.heroku.support/limits/boot_timeout](https://tools.heroku.support/limits/boot_timeout)
-
-* Always use option `refetchOnWindowFocus: true` when useQuery is used
-* double render page in dev mode when getServerSideProps used (it's ok in prod)
-* don't forget to use `as` on `<Link>`if not it's trigger an error 404
+- **Deployment** - Deployment on **Heroku**: increase boot timeout, put on max (because take more than 60sec to generate files) here [https://tools.heroku.support/limits/boot_timeout](https://tools.heroku.support/limits/boot_timeout)
+- **Blitz / Next.js** - Always use option `refetchOnWindowFocus: true` when **useQuery** is used - double render page in dev mode when **getServerSideProps** used (it's ok in prod) - don't forget to use `as` on `<Link>`if not it's trigger an error 404
+- **Redux** - Select from global state : `const extractedState = useSelector(fnSelectFromSlice)` - Dispatch action : `const dispatch = useDispatch(); dispatch(fnAction())`
 
 ### TODO
 
@@ -38,4 +35,4 @@ npm run dev
 
 - [ ] React Player living on every public front page - [ ] test switch pages
 
-- [ ] Artist page - [ ] access via artist/id/slug-name-artist - [ ] HTTP 301 redirect any inbound display url that matches ID but doesn't match the text to the correct text. - [https://stackoverflow.com/questions/820493/can-an-seo-friendly-url-contain-a-unique-id](https://stackoverflow.com/questions/820493/can-an-seo-friendly-url-contain-a-unique-id) - [ ] design: default cover , name...
+- [ ] Artist page - [ ] access via artist/[id]/[slugArtist] - [ ] HTTP 301 redirect any inbound display url that matches ID but doesn't match the text to the correct text. - [https://stackoverflow.com/questions/820493/can-an-seo-friendly-url-contain-a-unique-id](https://stackoverflow.com/questions/820493/can-an-seo-friendly-url-contain-a-unique-id) - [ ] design: default cover , name...

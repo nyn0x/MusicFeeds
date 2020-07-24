@@ -7,5 +7,6 @@ module.exports = {
     "react/react-in-jsx-scope": "off", // React is always in scope with Blitz
     "jsx-a11y/anchor-is-valid": "off", //Doesn't play well with Blitz/Next <Link> usage
     "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
   },
 }
