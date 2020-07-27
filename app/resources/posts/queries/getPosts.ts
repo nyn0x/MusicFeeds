@@ -1,4 +1,5 @@
 import db, { FindManyPostArgs } from "db"
+import { checkTakeArg } from "app/validators/prisma"
 
 type GetPostsInput = {
   where?: FindManyPostArgs["where"]
@@ -14,6 +15,7 @@ export default async function getPosts(
   { where, orderBy, cursor, take, skip }: GetPostsInput,
   ctx: Record<any, any> = {}
 ) {
+  checkTakeArg(take)
   const posts = await db.post.findMany({
     where,
     orderBy,
