@@ -33,17 +33,16 @@ Start the dev server :
 
 - [ ] Auth by Blitz (currently in pre-release)
 
-- [ ] User can not fetch more than N entities maximun (via postman)
+- [ ] User can not fetch more than N entities defined in the backend
 
   - [x] function checker
   - [ ] function checker when `take` argument it's used with include
+  - [x] each queries can have a custom N max entities
   - [ ] test with middleware (prisma >=2.3 in next release of blitz) for global check
 
 - [ ] User can not fetch attributs not public (via postman)
 
-- [ ] User can not fetch too much deep relationship
-
-- [ ] Possibility to group attributs of an entity like serializer in Symfony ?
+- [x] User can not fetch too much deep relationship
 
 - [ ] Admin
 

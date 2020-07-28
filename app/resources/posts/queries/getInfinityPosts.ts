@@ -1,5 +1,5 @@
 import db, { FindManyPostArgs } from "db"
-import { checkTakeArg } from "app/validators/prisma"
+import { checkTakeArg, checkMaliciousQuery } from "app/validators/prisma"
 
 type GetPostsInput = {
   where?: FindManyPostArgs["where"]
@@ -12,7 +12,7 @@ type GetPostsInput = {
 }
 
 export default async function getInfinityPosts({ where, orderBy, take, skip }: GetPostsInput) {
-  checkTakeArg(take)
+  checkMaliciousQuery({ take, max: 30 })
   const products = await db.post.findMany({
     where,
     orderBy,

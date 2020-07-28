@@ -1,0 +1,20 @@
+{
+  "params": {
+    "select": {
+      "id": true,
+      "likes": {
+        "select": {
+          "Post": {
+            "select": {
+              "likes": true
+            }
+          }
+        }
+      }
+    },
+    "take": 20,
+    "orderBy": {
+      "id": "desc"
+    }
+  }
+}

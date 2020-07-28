@@ -79,19 +79,30 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const PostsList = () => {
   const dispatch = useDispatch()
-  // const [
-  //   groupedProducts,
-  //   { isFetching, isFetchingMore, fetchMore, canFetchMore },
-  // ] = useInfiniteQuery(
-  //   getInfinityPosts,
-  //   (page = { take: 2, skip: 0 }) => ({ where: { published: true }, ...page }),
-  //   {
-  //     getFetchMore: (lastGroup, allGroups) => lastGroup.nextPage,
-  //   }
-  // )
+  const [
+    groupedProducts,
+    { isFetching, isFetchingMore, fetchMore, canFetchMore },
+  ] = useInfiniteQuery(
+    getInfinityPosts,
+    (page = { take: 2, skip: 0 }) => ({ where: { published: true }, ...page }),
+    {
+      getFetchMore: (lastGroup, allGroups) => lastGroup.nextPage,
+      refetchOnWindowFocus: false,
+    }
+  )
   const [posts] = useQuery(
     getPosts,
-    { orderBy: { id: "desc" }, include: { likes: {} } },
+    {
+      orderBy: { id: "desc" },
+      include: {
+        likes: {
+          select: {
+            id: true,
+          },
+        },
+      },
+      take: 10,
+    },
     { refetchOnWindowFocus: false }
   )
   const classes = useStyles()
@@ -105,7 +116,7 @@ export const PostsList = () => {
   }
   return (
     <>
-      {/* {groupedProducts.map((group, i) => (
+      {groupedProducts.map((group, i) => (
         <React.Fragment key={i}>
           {group.products.map((product) => (
             <p key={product.id}>{product.title}</p>
@@ -117,7 +128,7 @@ export const PostsList = () => {
           {isFetchingMore ? "Loading more..." : canFetchMore ? "Load More" : "Nothing more to load"}
         </button>
       </div>
-      <div>{isFetching && !isFetchingMore ? "Fetching..." : null}</div> */}
+      <div>{isFetching && !isFetchingMore ? "Fetching..." : null}</div>
       <div>test</div>
       {posts.map((post) => (
         <Card key={post.id} className={classes.root}>
